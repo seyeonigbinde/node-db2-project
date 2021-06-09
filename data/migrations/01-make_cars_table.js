@@ -9,8 +9,8 @@ exports.up = function(knex) {
       table.text('title').defaultTo(0)
       table.text('transmission').defaultTo(0)
     })
-  }
+}
   
-  exports.down = function(knex) {
+exports.down = function(knex) {
     return knex.schema.dropTableIfExists('cars')
-  }
+}
