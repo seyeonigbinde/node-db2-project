@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
     } catch (err){
         next(err)
     }
-  })
+})
   
 router.get('/:id', checkCarId, 
     async (req, res, next) => {
@@ -25,7 +25,7 @@ router.get('/:id', checkCarId,
         } catch (err){
             next(err)
         }
-  })
+})
   
 router.post('/', checkCarPayload, 
     checkVinNumberUnique, 
@@ -38,7 +38,14 @@ router.post('/', checkCarPayload,
         catch(error) {
             next(error)
         }
-  })
+})
   
-
+router.use((err, req, res, next) => { // eslint-disable-line
+    console.log('err handling middleware kicking in!', err.message)
+    res.status(err.status || 500).json({
+      custom: 'something exploded inside the app',
+      message: err.message,
+      stack: err.stack,
+    })
+})
 module.exports = router;
