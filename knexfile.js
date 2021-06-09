@@ -1,9 +1,6 @@
 // no need to change this file
 const sharedConfig = {
   client: 'sqlite3',
-    connection: {
-      filename: './data/cars.db3'
-    },
     useNullAsDefault: true,
     migrations: {
       directory: './data/migrations',
